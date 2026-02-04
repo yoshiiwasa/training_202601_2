@@ -3,9 +3,24 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
+  <title>郵便番号-住所検索</title>
 </head>
 <body>
-  
+  <h1>郵便番号-住所検索</h1>
+  <form id="zipcode-form">
+    <p>数字7桁で入力してください。ハイフンの有無は問いません。</p>
+    <label for="zipcode">郵便番号</label>
+    <input
+      type="text"
+      id="zipcode"
+      name="zipcode"
+      placeholder="例: 1234567 または 123-4567"
+    >
+    <button type="submit">住所検索</button>
+  </form>
+
+<div id="result"></div>
+
+  <script src="script.js"></script>
 </body>
 </html>
