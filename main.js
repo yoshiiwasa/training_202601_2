@@ -5,7 +5,7 @@
 
   document.querySelector("form").addEventListener("submit", async (e) => {
     e.preventDefault();
-    const zipcode = document.querySelector("input").value;
+    const zipcode = document.querySelector("input").value.replace(/[^0-9]/g, "");
     const accessUrl = `https://zipcloud.ibsnet.co.jp/api/search?zipcode=${zipcode}`;
     const statusEl = document.querySelector("#status");
 
@@ -56,6 +56,6 @@
   });
 
   document.querySelector("#resetTbody").addEventListener("click", () => {
-    document.querySelector("tbody").innerHTML = null;
+    document.querySelector("tbody").innerHTML = "";
   });
 }
