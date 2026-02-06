@@ -12,7 +12,7 @@
     try {
       const response = await fetch(accessUrl);
       const data = await response.json();
-
+      
       if (data.results === null) {
         statusEl.textContent = '存在しない郵便番号です';
         return;
@@ -28,14 +28,19 @@
 
         const tdZipElement = document.createElement('td');
         tdZipElement.textContent = item.zipcode;
-        trElement.appendChild(tdZipElement);
 
         const tdAddressElement = document.createElement('td');
         tdAddressElement.textContent = `${item.address1}${item.address2}${item.address3}`;
-        trElement.appendChild(tdAddressElement);
+
+        const tdFuriganaElement = document.createElement('td');
+        tdFuriganaElement.textContent = `${item.kana1}${item.kana2}${item.kana3}`;
+
+        trElement.append(tdZipElement, tdAddressElement, tdFuriganaElement);
 
         const tbody = document.querySelector('#addressesTable tbody');
-        tbody.appendChild(trElement);
+        tbody.insertBefore(trElement, tbody.firstElementChild);
+
+        e.target.reset();
 
       });
     } catch (err) {
@@ -44,4 +49,5 @@
     }
   });
 
+// 画面サイズ変えたときに崩れないよう対応させる
 }

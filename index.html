@@ -6,26 +6,27 @@
   <title>郵便番号-住所検索</title>
 </head>
 <body>
-  <h1>郵便番号-住所検索</h1>
+  <h1>郵便番号から住所検索</h1>
   <form id="zipcode-form">
-    <p>数字7桁で入力してください。ハイフンの有無は問いません。</p>
-    <label for="zipcode">郵便番号</label>
+    <p>郵便番号を数字7桁で入力してください。ハイフンの有無は問いません。</p>
+    <label for="zipcode">〒</label>
     <input
       type="text"
       id="zipcode"
       name="zipcode"
-      placeholder="例: 1234567 または 123-4567"
+      placeholder="例: 1234567または123-4567"
     >
     <button type="submit">住所検索</button>
   </form>
 
   <h2>検索履歴</h2>
   <p id="status"></p>
-  <table id="addressesTable">
+  <table id="addressesTable" >
     <thead>
       <tr>
-        <th>郵便番号</th>
+        <th>〒</th>
         <th>住所</th>
+        <th>住所ｶﾅ</th>
       </tr>
     </thead>
     <tbody>
