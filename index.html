@@ -10,8 +10,7 @@
     <h1>郵便番号から住所検索</h1>
     <form id="zipcode-form">
       <p>郵便番号を数字7桁で入力してください。ハイフンの有無は問いません。</p>
-      <label for="zipcode" style="font-weight: bold; color: var(--main-color)"
-        >〒</label
+      <label for="zipcode" id="zipcode-icon">〒</label
       >
       <input
         type="text"
@@ -23,7 +22,7 @@
     </form>
 
     <div>
-      <h2>検索履歴</h2>
+      <h2>検索結果</h2>
       <p id="status"></p>
       <button id="resetTbody">結果をリセット</button>
       <table id="addressesTable">

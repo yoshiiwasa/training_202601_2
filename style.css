@@ -6,6 +6,7 @@
 
   body {
     min-width: 370px;
+    background-color: rgb(248, 233, 233);
   }
 
 h1 {
@@ -15,6 +16,7 @@ h1 {
 }
 
 form {
+  background-color: white;
   border: 1px solid var(--main-color);
   text-align: center;
   line-height: 8px;
@@ -24,6 +26,17 @@ form {
 p {
   font-size: 16px;
   line-height: 1.5;
+}
+
+#zipcode-icon {
+  font-size: 24px;
+  font-weight: bold;
+  color: var(--main-color);
+  vertical-align: middle;
+}
+
+input {
+  padding: 8px 12px;
 }
 
 div {
@@ -50,5 +63,6 @@ th {
 }
 
 td {
+  background-color: white;
   border: 1px solid;
 }
