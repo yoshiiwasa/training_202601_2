@@ -1,0 +1,54 @@
+@charset "utf-8";
+
+:root {
+  --main-color: rgb(240, 40, 40);
+}
+
+  body {
+    min-width: 370px;
+  }
+
+h1 {
+  color: var(--main-color);
+  text-align: center;
+  padding: 16px;
+}
+
+form {
+  border: 1px solid var(--main-color);
+  text-align: center;
+  line-height: 8px;
+  padding: 8px;
+}
+
+p {
+  font-size: 16px;
+  line-height: 1.5;
+}
+
+div {
+  text-align: center;
+}
+
+h2 {
+  margin: 8px;
+}
+
+#status {
+  color: var(--main-color);
+}
+
+table {
+  width: 80%;
+  border-collapse: collapse;
+  margin: 8px auto;
+}
+
+th {
+  border: 1px solid;
+  background-color: rgb(240, 180, 180);
+}
+
+td {
+  border: 1px solid;
+}
