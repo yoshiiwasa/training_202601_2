@@ -49,5 +49,8 @@
     }
   });
 
+  document.querySelector('#resetTbody').addEventListener('click', () => {
+    document.querySelector('tbody').innerHTML = null;
+  });
 // 画面サイズ変えたときに崩れないよう対応させる
 }
