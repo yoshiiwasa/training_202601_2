@@ -7,7 +7,7 @@
   const statusEl = document.querySelector("#status");
   const statusMessages = {
     200: "",
-    400: "存在しない郵便番号です",
+    400: "必須パラメータが指定されていません",
     500: "APIエラーが発生しました",
   };
   function getStatusMessage(data) {
