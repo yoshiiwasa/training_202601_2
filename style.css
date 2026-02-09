@@ -1,0 +1,68 @@
+@charset "utf-8";
+
+:root {
+  --main-color: rgb(240, 40, 40);
+}
+
+  body {
+    min-width: 370px;
+    background-color: rgb(248, 233, 233);
+  }
+
+h1 {
+  color: var(--main-color);
+  text-align: center;
+  padding: 16px;
+}
+
+form {
+  background-color: white;
+  border: 1px solid var(--main-color);
+  text-align: center;
+  line-height: 8px;
+  padding: 8px;
+}
+
+p {
+  font-size: 16px;
+  line-height: 1.5;
+}
+
+#zipcode-icon {
+  font-size: 24px;
+  font-weight: bold;
+  color: var(--main-color);
+  vertical-align: middle;
+}
+
+input {
+  padding: 8px 12px;
+}
+
+div {
+  text-align: center;
+}
+
+h2 {
+  margin: 8px;
+}
+
+#status {
+  color: var(--main-color);
+}
+
+table {
+  width: 80%;
+  border-collapse: collapse;
+  margin: 8px auto;
+}
+
+th {
+  border: 1px solid;
+  background-color: rgb(240, 180, 180);
+}
+
+td {
+  background-color: white;
+  border: 1px solid;
+}
