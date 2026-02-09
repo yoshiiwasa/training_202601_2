@@ -4,6 +4,10 @@
   /** 郵便番号検索APIのURL */
   const apiUrl = "https://zipcloud.ibsnet.co.jp/api/search?zipcode=";
 
+  function createAccessUrl() {
+
+  }
+
   /** ステータスのメッセージ */
   const statusEl = document.querySelector("#status");
   const statusMessages = {
@@ -43,7 +47,8 @@
   document.querySelector("input").focus();
   document.querySelector("form").addEventListener("submit", async (submitEvent) => {
     submitEvent.preventDefault();
-    const zipcode = document.querySelector("input").value;
+    const inputZipcode = document.querySelector("input").value;
+    let zipcode = inputZipcode.replace(/[０-９]/g, s => String.fromCharCode(s.charCodeAt(0) - 0xFEE0));
     const accessUrl = `${apiUrl}${zipcode}`;
 
     setStatusMessage("検索中…");
