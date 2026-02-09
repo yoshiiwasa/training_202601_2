@@ -1,9 +1,10 @@
 "use strict";
 
 {
-  /** 郵便番号検索APIのURLです。 */
+  /** 郵便番号検索APIのURL */
   const apiUrl = "https://zipcloud.ibsnet.co.jp/api/search?zipcode=";
 
+  /** ステータスのメッセージ */
   const statusEl = document.querySelector("#status");
   const statusMessages = {
     200: "",
@@ -13,54 +14,58 @@
   function getStatusMessage(data) {
     return statusMessages[data.status] ?? "不明なエラーです";
   }
+  function setStatusMessage(message = "") {
+    statusEl.textContent = message;
+  }
+  
+  /** 住所の行を作成・追加 */
+  function createAddressRow(item) {
+    const trEl = document.createElement("tr");
+    const tdZipEl = document.createElement("td");
+    tdZipEl.textContent = `${item.zipcode}`;
+    const tdAddressEl = document.createElement("td");
+    tdAddressEl.textContent = `${item.address1}${item.address2}${item.address3}`;
+    const tdFuriganaEl = document.createElement("td");
+    tdFuriganaEl.textContent = `${item.kana1}${item.kana2}${item.kana3}`;
+    trEl.append(tdZipEl, tdAddressEl, tdFuriganaEl);
+    tbody.insertBefore(trEl, tbody.firstElementChild);
+  }
 
+  //** 行数の制限 */
   const tbody = document.querySelector("#addressesTable tbody");
+  function limitTableRows(tbody, maxRows){
+    while (tbody.rows.length > maxRows) {
+      tbody.removeChild(tbody.lastElementChild);
+    }
+  }
+
 
   document.querySelector("input").focus();
-
-  document.querySelector("form").addEventListener("submit", async (e) => {
-    e.preventDefault();
-
+  document.querySelector("form").addEventListener("submit", async (submitEvent) => {
+    submitEvent.preventDefault();
     const zipcode = document.querySelector("input").value;
     const accessUrl = `${apiUrl}${zipcode}`;
 
-    statusEl.textContent = "検索中…";
+    setStatusMessage("検索中…");
 
     try {
       const response = await fetch(accessUrl);
       const data = await response.json();
 
-      console.log(accessUrl);
-      console.log(data.status);
-
-      statusEl.textContent = getStatusMessage(data);
+      setStatusMessage(getStatusMessage(data));
 
       if (data.results) {
         data.results.forEach((item) => {
-          const trEl = document.createElement("tr");
-
-          const tdZipEl = document.createElement("td");
-          tdZipEl.textContent = `${item.zipcode}`;
-
-          const tdAddressEl = document.createElement("td");
-          tdAddressEl.textContent = `${item.address1}${item.address2}${item.address3}`;
-
-          const tdFuriganaEl = document.createElement("td");
-          tdFuriganaEl.textContent = `${item.kana1}${item.kana2}${item.kana3}`;
-
-          trEl.append(tdZipEl, tdAddressEl, tdFuriganaEl);
-          tbody.insertBefore(trEl, tbody.firstElementChild);
+          createAddressRow(item);
         });
-        while (tbody.rows.length > 20) {
-          tbody.removeChild(tbody.lastElementChild);
-        }
-        e.target.reset();
+        limitTableRows(tbody,20);
+        submitEvent.target.reset();
       } else {
-        statusEl.textContent = "存在しない郵便番号です";
+        setStatusMessage("存在しない郵便番号です");
       }
     } catch (err) {
       console.log(err);
-      statusEl.textContent = "通信エラーが発生しました";
+      setStatusMessage("通信エラーが発生しました");
     }
   });
 
